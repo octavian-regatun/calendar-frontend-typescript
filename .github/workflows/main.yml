@@ -27,5 +27,5 @@ jobs:
       run: docker build .
       
     - name: Docker push
-      run: docker octavianregatun/planitly
+      run: docker push octavianregatun/planitly
       
