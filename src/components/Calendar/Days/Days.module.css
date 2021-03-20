@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.day {
+  flex: 1 1 0;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #c5cae9;
+  border-right: 1px solid #c5cae9;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.day:first-child {
+  border-left: 1px solid #c5cae9;
+}
+
+.day:hover {
+  background-color: #eeeeee;
+  transition: all 0.2s ease-out;
+}
+
+.weekend {
+  background-color: #ffebee;
+}
+
+.weekend:hover {
+  background-color: #f0dee1;
+}
+
+.notCurrentMonth {
+  background-color: #e0e0e0;
+  color: #bcbcbc;
+  cursor: default;
+}
+
+.notCurrentMonth:hover {
+  background-color: #e0e0e0;
+}
+
+.daysRow {
+  display: flex;
+  flex-grow: 1;
+}

@@ -1,0 +1,44 @@
+.navbar {
+  background-color: white;
+  box-shadow: none;
+  height: 100px;
+  border-bottom: 1px solid #c5cae9;
+}
+
+.container {
+  height: 100%;
+  padding-left: 100px;
+}
+
+.leftGrid {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #c5cae9;
+}
+
+.middleGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightGrid {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.avatar {
+  margin-right: 32px;
+}
+
+.name {
+  margin-right: 32px;
+}
+
+.title {
+  font-size: 72px;
+  font-weight: bold;
+}

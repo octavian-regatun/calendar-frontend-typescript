@@ -1,0 +1,13 @@
+.container {
+  height: calc(100vh - 100px);
+  padding-left: 100px;
+}
+
+.middleGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftGrid {
+  padding-left: 100px;
+}

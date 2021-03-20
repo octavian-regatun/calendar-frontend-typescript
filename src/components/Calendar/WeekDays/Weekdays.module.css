@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+}
+
+.weekday {
+  flex-grow: 1;
+  width: 64px;
+  border-top: 1px solid #c5cae9;
+  border-right: 1px solid #c5cae9;
+  border-bottom: 1px solid #c5cae9;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.weekday:first-child {
+  border-left: 1px solid #c5cae9;
+}
+
+.weekday:first-child {
+  border-radius: 16px 0 0 0;
+}
+
+.weekday:last-child {
+  border-radius: 0 16px 0 0;
+}
+
+.weekend {
+  background-color: #ffebee;
+}

@@ -1,0 +1,12 @@
+.button {
+  border-color: #002984;
+  border-radius: 100%;
+  height: 48px;
+  width: 50px;
+  min-width: 0px;
+  font-weight: bold;
+}
+
+.button:first-child {
+  margin-right: 16px;
+}

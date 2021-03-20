@@ -1,0 +1,18 @@
+.search {
+  width: 75%;
+  height: 50px;
+  border-radius: 16px;
+}
+
+.input {
+  background-color: lightgray;
+  border-radius: 16px;
+}
+
+.input::before {
+  border-bottom: none !important;
+}
+
+.input::after {
+  border-bottom: none !important;
+}
