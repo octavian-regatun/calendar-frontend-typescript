@@ -1,5 +1,12 @@
 .root {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin-top: 32px; */
+  height: 100%;
+  overflow: auto;
+}
+
+.title {
   margin-top: 32px;
 }

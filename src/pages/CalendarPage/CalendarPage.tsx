@@ -17,7 +17,7 @@ export const CalendarPage: React.FC = () => {
         <Grid item md={6} className={styles.middleGrid}>
           <Calendar />
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={3} className={styles.rightGrid}>
           <UpcomingEvents />
         </Grid>
       </Grid>

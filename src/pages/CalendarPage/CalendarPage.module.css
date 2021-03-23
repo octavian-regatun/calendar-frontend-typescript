@@ -11,3 +11,7 @@
 .leftGrid {
   padding-left: 100px;
 }
+
+.rightGrid {
+  height: 100%;
+}

@@ -3,12 +3,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import authReducer from "./auth/reducer";
 import calendarReducer from "./calendar/reducer";
-import dataReducer from "./data/reducer";
+import eventsReducer from "./events/reducer";
+import userReducer from "./user/reducer";
 
 export const rootReducer = combineReducers({
   auth: authReducer,
-  data: dataReducer,
+  user: userReducer,
   calendar: calendarReducer,
+  events: eventsReducer,
 });
 
 const composeEnhancers = composeWithDevTools({

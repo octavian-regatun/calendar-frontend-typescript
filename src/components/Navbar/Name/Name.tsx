@@ -9,11 +9,11 @@ interface Props {
 }
 
 export const Name: React.FC<Props> = ({ className }) => {
-  const dataState = useSelector((state: Store) => state.data);
+  const user = useSelector((state: Store) => state.user);
 
   return (
     <Typography variant="h6" className={`${styles.userName} ${className}`}>
-      {`${dataState.user?.firstName} ${dataState.user?.lastName}`}
+      {`${user.user?.firstName} ${user.user?.lastName}`}
     </Typography>
   );
 };

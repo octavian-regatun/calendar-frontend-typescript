@@ -13,7 +13,7 @@ export const Auth: React.FC<Props> = ({ children }) => {
   const dispatch = useDispatch();
 
   const auth = useSelector((state: Store) => state.auth);
-  const data = useSelector((state: Store) => state.data);
+  const user = useSelector((state: Store) => state.user);
 
   function getJwtPayloadFromToken(): JwtPayload | undefined {
     const token = localStorage.getItem("token");
@@ -58,7 +58,5 @@ export const Auth: React.FC<Props> = ({ children }) => {
     }
   }, []);
 
-  return auth.initiated && !auth.loading && !data.loadings.user
-    ? children
-    : null;
+  return auth.initiated && !auth.loading && !user.loading ? children : null;
 };

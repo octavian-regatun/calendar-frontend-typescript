@@ -2,7 +2,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { Dispatch } from "redux";
 import JwtPayload from "../../interfaces/jwtPayload.interface";
-import { dataUserGet } from "../data/action";
+import { userGet } from "../user/action";
 import { getToken } from "./effects";
 import { AuthActions, AuthActionTypes } from "./types";
 
@@ -33,7 +33,7 @@ export const authSignIn = (tokenID: string) => async (
 
     localStorage.setItem("token", token);
 
-    dispatch(dataUserGet());
+    dispatch(userGet());
 
     dispatch({
       type: AuthActionTypes.SIGN_IN,
@@ -50,7 +50,7 @@ export const authUpdate = () => (dispatch: Dispatch<any>): void => {
   if (token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
-  dispatch(dataUserGet());
+  dispatch(userGet());
 
   dispatch({ type: AuthActionTypes.UPDATE });
 };

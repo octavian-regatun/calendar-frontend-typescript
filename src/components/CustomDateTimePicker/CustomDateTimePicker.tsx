@@ -1,23 +1,23 @@
 /** @jsxImportSource @emotion/react */
 
 import { css } from "@emotion/react";
-import { TextField, TextFieldProps } from "@material-ui/core";
+import { DateTimePicker, DateTimePickerProps } from "@material-ui/pickers";
 import React from "react";
 
 interface Props {
-  textFieldProps?: TextFieldProps;
+  color: string;
   backgroundColor: string;
+  dateTimePickerProps: DateTimePickerProps;
 }
 
-export const CustomTextField: React.FC<Props> = ({
+export const CustomDateTimePicker: React.FC<Props> = ({
+  color,
   backgroundColor,
-  textFieldProps,
+  dateTimePickerProps,
 }) => {
-  return (
-    <TextField
-      {...textFieldProps}
-      variant="outlined"
-      InputLabelProps={{ className: "test" }}
+  return color === "white" ? (
+    <DateTimePicker
+      {...dateTimePickerProps}
       css={css`
         fieldset.MuiOutlinedInput-notchedOutline {
           border: none;
@@ -57,11 +57,7 @@ export const CustomTextField: React.FC<Props> = ({
         input {
           color: white;
         }
-
-        textarea {
-          color: white;
-        }
       `}
     />
-  );
+  ) : null;
 };
