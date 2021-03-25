@@ -2,12 +2,10 @@ import { Button, Typography } from "@material-ui/core";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SubjectIcon from "@material-ui/icons/Subject";
-import TitleIcon from "@material-ui/icons/Title";
 import dayjs from "dayjs";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { eventsDelete } from "../../../store/events/action";
-import { CustomButton } from "../../CustomButton/CustomButton";
 import styles from "./Event.module.css";
 
 interface Props {

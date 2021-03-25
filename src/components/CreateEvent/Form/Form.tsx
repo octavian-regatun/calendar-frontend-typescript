@@ -1,4 +1,3 @@
-import { Grid } from "@material-ui/core";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import SubjectIcon from "@material-ui/icons/Subject";
@@ -6,18 +5,25 @@ import TitleIcon from "@material-ui/icons/Title";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import axios from "axios";
 import { useFormik } from "formik";
+import { isBuffer } from "node:util";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import config from "../../../config";
 import { eventsGet } from "../../../store/events/action";
+import { locationCurrentEventSetLocation } from "../../../store/location/action";
+import { Store } from "../../../store/store";
 import { CustomButton } from "../../CustomButton/CustomButton";
 import { CustomDateTimePicker } from "../../CustomDateTimePicker/CustomDateTimePicker";
 import { CustomTextField } from "../../CustomTextField/CustomTextField";
 import styles from "./Form.module.css";
+import { LocationMap } from "./LocationMap/LocationMap";
+
+let locationValue;
 
 export const Form: React.FC = () => {
   const dispatch = useDispatch();
+  const location = useSelector((store: Store) => store.location);
 
   const validationSchema = yup.object({
     title: yup
@@ -47,6 +53,13 @@ export const Form: React.FC = () => {
       }
     },
   });
+
+  function handleLocationChange(event: React.ChangeEvent<any>) {
+    console.log(event.target.value);
+    dispatch(locationCurrentEventSetLocation({ name: event.target.value }));
+  }
+
+  formik.values.location = location.createEvent.location || "";
 
   return (
     <form className={styles.root} onSubmit={formik.handleSubmit}>
@@ -126,9 +139,12 @@ export const Form: React.FC = () => {
             fullWidth: true,
             multiline: true,
             value: formik.values.location,
-            onChange: formik.handleChange,
+            onChange: handleLocationChange,
           }}
         />
+      </div>
+      <div className={styles.row}>
+        <LocationMap />
       </div>
       <div className={`${styles.row} ${styles.buttonRow}`}>
         <CustomButton

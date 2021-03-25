@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import authReducer from "./auth/reducer";
 import calendarReducer from "./calendar/reducer";
 import eventsReducer from "./events/reducer";
+import locationReducer from "./location/reducer";
 import userReducer from "./user/reducer";
 
 export const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
   user: userReducer,
   calendar: calendarReducer,
   events: eventsReducer,
+  location: locationReducer,
 });
 
 const composeEnhancers = composeWithDevTools({

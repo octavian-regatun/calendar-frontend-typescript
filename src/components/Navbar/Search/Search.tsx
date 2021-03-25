@@ -13,7 +13,7 @@ const Search: React.FC = () => {
         }
       `}
       className={styles.search}
-      label="Search"
+      label="Search - work in progress"
       variant="filled"
       InputProps={{ className: styles.input }}
       InputLabelProps={{ className: styles.label }}

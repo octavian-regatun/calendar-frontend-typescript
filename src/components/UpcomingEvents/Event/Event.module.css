@@ -1,9 +1,15 @@
 .root {
+  transition: all 0.2s ease-out;
   background-color: #3f51b5;
   margin-top: 32px;
   border-radius: 16px;
   width: 80%;
   padding: 16px 16px;
+}
+
+.root:hover {
+  background-color: #303f9f;
+  transition: all 0.2s ease-out;
 }
 
 .row {

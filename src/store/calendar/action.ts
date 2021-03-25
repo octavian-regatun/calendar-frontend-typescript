@@ -3,9 +3,7 @@ import { store } from "../store";
 import {
   CalendarActions,
   CalendarActionTypes,
-  CalendarDecrementMonthAction,
   CalendarDecrementYearAction,
-  CalendarIncrementMonthAction,
   CalendarIncrementYearAction,
 } from "./types";
 
