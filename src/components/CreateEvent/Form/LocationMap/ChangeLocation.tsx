@@ -17,11 +17,11 @@ export const ChangeLocation: React.FC = () => {
     dispatch(locationCurrentEventGetCurrentLocation());
   }, []);
 
-  if (location.createEvent.currentLocation && shouldLocate) {
+  if (location.createEvent.currentLatLon && shouldLocate) {
     map.setView(
       new LatLng(
-        location.createEvent.currentLocation.lat,
-        location.createEvent.currentLocation.lon
+        location.createEvent.currentLatLon.lat,
+        location.createEvent.currentLatLon.lon
       ),
       12
     );

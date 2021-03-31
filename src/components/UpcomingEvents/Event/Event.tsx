@@ -5,6 +5,7 @@ import SubjectIcon from "@material-ui/icons/Subject";
 import dayjs from "dayjs";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { LatLon } from "../../../interfaces/latLong.interface";
 import { eventsDelete } from "../../../store/events/action";
 import styles from "./Event.module.css";
 
@@ -15,6 +16,7 @@ interface Props {
   fromDate: Date;
   toDate?: Date;
   location?: string;
+  latLon?: LatLon;
 }
 
 export const Event: React.FC<Props> = ({

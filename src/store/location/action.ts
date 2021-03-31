@@ -7,29 +7,9 @@ import { LatLon } from "../../interfaces/latLong.interface";
 import {
   LocationActions,
   LocationActionTypes,
+  LocationCurrentEventDeletePickedLocation,
   LocationCurrentEventSetPickedLocation,
 } from "./types";
-
-export const locationCurrentEventSetLocation = (location: {
-  name?: string;
-  latLng?: LatLng;
-}) => async (dispatch: Dispatch<LocationActions>): Promise<void> => {
-  if (location.latLng) {
-    const { data: locationResponse } = await axios.get<string>(
-      `${config.BACKEND_URI}/api/location/reverse-geocode?lat=${location.latLng.lat}&lon=${location.latLng.lng}`
-    );
-
-    dispatch({
-      type: LocationActionTypes.CURRENT_EVENT_SET_LOCATION,
-      payload: locationResponse,
-    });
-  } else {
-    dispatch({
-      type: LocationActionTypes.CURRENT_EVENT_SET_LOCATION,
-      payload: location.name || "",
-    });
-  }
-};
 
 export const locationCurrentEventGetCurrentLocation = () => async (
   dispatch: Dispatch<any>
@@ -46,13 +26,17 @@ export const locationCurrentEventGetCurrentLocation = () => async (
   });
 };
 
-export const locationCurrentEventSetPickedLocation = (latLng: LatLng) => (
-  dispatch: Dispatch<any>
-): void => {
-  dispatch(locationCurrentEventSetLocation({ latLng }));
-
-  dispatch({
+export const locationCurrentEventSetPickedLocation = (
+  latLon: LatLon
+): LocationCurrentEventSetPickedLocation => {
+  return {
     type: LocationActionTypes.CURRENT_EVENT_SET_PICKED_LOCATION,
-    payload: latLng,
-  });
+    payload: latLon,
+  };
+};
+
+export const locationCurrentEventDeletePickedLocation = (): LocationCurrentEventDeletePickedLocation => {
+  return {
+    type: LocationActionTypes.CURRENT_EVENT_DELETE_PICKED_LOCATION,
+  };
 };

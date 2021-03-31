@@ -5,13 +5,12 @@ import TitleIcon from "@material-ui/icons/Title";
 import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
 import axios from "axios";
 import { useFormik } from "formik";
-import { isBuffer } from "node:util";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import config from "../../../config";
+import { LatLon } from "../../../interfaces/latLong.interface";
 import { eventsGet } from "../../../store/events/action";
-import { locationCurrentEventSetLocation } from "../../../store/location/action";
 import { Store } from "../../../store/store";
 import { CustomButton } from "../../CustomButton/CustomButton";
 import { CustomDateTimePicker } from "../../CustomDateTimePicker/CustomDateTimePicker";
@@ -19,7 +18,14 @@ import { CustomTextField } from "../../CustomTextField/CustomTextField";
 import styles from "./Form.module.css";
 import { LocationMap } from "./LocationMap/LocationMap";
 
-let locationValue;
+interface Values {
+  title: string;
+  description: string;
+  fromDate: Date | null;
+  toDate: Date | null;
+  location: string;
+  latLon?: LatLon;
+}
 
 export const Form: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,18 +39,23 @@ export const Form: React.FC = () => {
     fromDate: yup.date().required("From Date is required"),
   });
 
-  const formik = useFormik({
+  const formik = useFormik<Values>({
     initialValues: {
       title: "",
       description: "",
       fromDate: null,
       toDate: null,
       location: "",
+      latLon: undefined,
     },
     validationSchema,
     validateOnChange: true,
     onSubmit: async (values) => {
       try {
+        formik.values.latLon = location.createEvent.pickedLatLon;
+
+        console.log(values);
+
         await axios.post(`${config.BACKEND_URI}/api/events`, values);
 
         dispatch(eventsGet());
@@ -53,13 +64,6 @@ export const Form: React.FC = () => {
       }
     },
   });
-
-  function handleLocationChange(event: React.ChangeEvent<any>) {
-    console.log(event.target.value);
-    dispatch(locationCurrentEventSetLocation({ name: event.target.value }));
-  }
-
-  formik.values.location = location.createEvent.location || "";
 
   return (
     <form className={styles.root} onSubmit={formik.handleSubmit}>
@@ -100,7 +104,7 @@ export const Form: React.FC = () => {
           dateTimePickerProps={{
             ampm: false,
             clearable: true,
-            minutesStep: 5,
+            minutesStep: 15,
             className: styles.fromDate,
             label: "From Date *",
             name: "fromDate",
@@ -118,7 +122,7 @@ export const Form: React.FC = () => {
           dateTimePickerProps={{
             ampm: false,
             clearable: true,
-            minutesStep: 5,
+            minutesStep: 15,
             label: "To Date",
             name: "toDate",
             inputVariant: "outlined",
@@ -137,9 +141,9 @@ export const Form: React.FC = () => {
             label: "Location",
             name: "location",
             fullWidth: true,
-            multiline: true,
+            multiline: false,
             value: formik.values.location,
-            onChange: handleLocationChange,
+            onChange: formik.handleChange,
           }}
         />
       </div>

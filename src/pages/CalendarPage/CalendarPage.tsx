@@ -3,6 +3,7 @@ import React from "react";
 import { Calendar } from "../../components/Calendar/Calendar";
 import { CreateEvent } from "../../components/CreateEvent/CreateEvent";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { UpcomingEvents } from "../../components/UpcomingEvents/UpcomingEvents";
 import styles from "./CalendarPage.module.css";
 
@@ -10,6 +11,7 @@ export const CalendarPage: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Sidebar />
       <Grid container className={styles.container}>
         <Grid item md={3}>
           <CreateEvent />

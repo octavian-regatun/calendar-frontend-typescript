@@ -1,10 +1,9 @@
-import { LatLng, LatLngBounds } from "leaflet";
 import { LatLon } from "../../interfaces/latLong.interface";
 
 export enum LocationActionTypes {
   CURRENT_EVENT_GET_CURRENT_LOCATION = "LOCATION_CURRENT_EVENT_GET_CURRENT_LOCATION",
   CURRENT_EVENT_SET_PICKED_LOCATION = "LOCATION_CURRENT_EVENT_SET_PICKED_LOCATION",
-  CURRENT_EVENT_SET_LOCATION = "LOCATION_CURRENT_EVENT_SET_LOCATION",
+  CURRENT_EVENT_DELETE_PICKED_LOCATION = "LOCATION_CURRENT_EVENT_DELETE_PICKED_LOCATION",
 }
 
 export interface LocationCurrentEventGetCurrentLocation {
@@ -14,15 +13,14 @@ export interface LocationCurrentEventGetCurrentLocation {
 
 export interface LocationCurrentEventSetPickedLocation {
   type: LocationActionTypes.CURRENT_EVENT_SET_PICKED_LOCATION;
-  payload: LatLng;
+  payload: LatLon;
 }
 
-export interface LocationCurrentEventSetLocation {
-  type: LocationActionTypes.CURRENT_EVENT_SET_LOCATION;
-  payload: string;
+export interface LocationCurrentEventDeletePickedLocation {
+  type: LocationActionTypes.CURRENT_EVENT_DELETE_PICKED_LOCATION;
 }
 
 export type LocationActions =
   | LocationCurrentEventGetCurrentLocation
   | LocationCurrentEventSetPickedLocation
-  | LocationCurrentEventSetLocation;
+  | LocationCurrentEventDeletePickedLocation;

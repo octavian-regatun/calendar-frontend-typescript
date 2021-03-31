@@ -1,21 +1,17 @@
-import { BookRounded } from "@material-ui/icons";
-import { bounds, LatLng, LatLngBounds } from "leaflet";
 import { LatLon } from "../../interfaces/latLong.interface";
 import { LocationActions, LocationActionTypes } from "./types";
 
 interface DefaultState {
   createEvent: {
-    currentLocation?: LatLon;
-    pickedLocation?: LatLng;
-    location?: string;
+    currentLatLon?: LatLon;
+    pickedLatLon?: LatLon;
   };
 }
 
 const defaultState: DefaultState = {
   createEvent: {
-    currentLocation: undefined,
-    pickedLocation: undefined,
-    location: undefined,
+    currentLatLon: undefined,
+    pickedLatLon: undefined,
   },
 };
 
@@ -29,7 +25,7 @@ const locationReducer = (
         ...state,
         createEvent: {
           ...state.createEvent,
-          currentLocation: action.payload,
+          currentLatLon: action.payload,
         },
       };
 
@@ -38,16 +34,16 @@ const locationReducer = (
         ...state,
         createEvent: {
           ...state.createEvent,
-          pickedLocation: action.payload,
+          pickedLatLon: action.payload,
         },
       };
 
-    case LocationActionTypes.CURRENT_EVENT_SET_LOCATION:
+    case LocationActionTypes.CURRENT_EVENT_DELETE_PICKED_LOCATION:
       return {
         ...state,
         createEvent: {
           ...state.createEvent,
-          location: action.payload,
+          pickedLatLon: undefined,
         },
       };
 

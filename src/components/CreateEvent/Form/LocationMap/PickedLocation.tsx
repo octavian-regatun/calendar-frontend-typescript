@@ -1,5 +1,4 @@
 import { LatLng } from "leaflet";
-import { useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { locationCurrentEventSetPickedLocation } from "../../../../store/location/action";
@@ -9,16 +8,21 @@ export const PickedLocation: React.FC = () => {
   const dispatch = useDispatch();
   const location = useSelector((store: Store) => store.location);
 
-  const { pickedLocation } = location.createEvent;
+  const { pickedLatLon: pickedLocation } = location.createEvent;
 
   useMapEvents({
     click(e) {
-      dispatch(locationCurrentEventSetPickedLocation(e.latlng));
+      dispatch(
+        locationCurrentEventSetPickedLocation({
+          lat: e.latlng.lat,
+          lon: e.latlng.lng,
+        })
+      );
     },
   });
 
   return pickedLocation ? (
-    <Marker position={new LatLng(pickedLocation.lat, pickedLocation.lng)}>
+    <Marker position={new LatLng(pickedLocation.lat, pickedLocation.lon)}>
       <Popup>Picked Location</Popup>
     </Marker>
   ) : null;
