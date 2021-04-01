@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import { SocialPage } from "./components/SocialPage/SocialPage";
 import { CalendarPage } from "./pages/CalendarPage/CalendarPage";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
@@ -19,6 +20,12 @@ export default function Routes(): JSX.Element {
           redirect="/login"
           condition={auth.isAuthenticated}
           component={<CalendarPage />}
+        />
+        <ProtectedRoute
+          path="/social"
+          redirect="/login"
+          condition={auth.isAuthenticated}
+          component={<SocialPage />}
         />
       </Switch>
     </Router>

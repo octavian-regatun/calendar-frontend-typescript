@@ -1,6 +1,6 @@
 import { AppBar, Button, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import AvatarImage from "../../images/Avatar.png";
 import { Avatar } from "../Avatar/Avatar";
 import { Title } from "../Title/Title";
@@ -11,6 +11,13 @@ import Search from "./Search/Search";
 export const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+
+  function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const pageFromUri = capitalizeFirstLetter(location.pathname.replace("/", ""));
 
   const handleLogout = (): void => {
     localStorage.removeItem("token");
@@ -26,7 +33,7 @@ export const Navbar: React.FC = () => {
         </Grid>
         <Grid item md={6} className={styles.middleGrid}>
           <Title
-            text="Calendar"
+            text={pageFromUri}
             variant="h2"
             color="main"
             className={styles.title}

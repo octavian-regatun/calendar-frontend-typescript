@@ -9,23 +9,23 @@ interface Props {
   children: JSX.Element;
 }
 
+export function getJwtPayloadFromToken(): JwtPayload | undefined {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    const jwtPayload = jwtDecode<JwtPayload>(token);
+
+    return jwtPayload;
+  }
+
+  return undefined;
+}
+
 export const Auth: React.FC<Props> = ({ children }) => {
   const dispatch = useDispatch();
 
   const auth = useSelector((state: Store) => state.auth);
   const user = useSelector((state: Store) => state.user);
-
-  function getJwtPayloadFromToken(): JwtPayload | undefined {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      const jwtPayload = jwtDecode<JwtPayload>(token);
-
-      return jwtPayload;
-    }
-
-    return undefined;
-  }
 
   function isTokenExpired(): boolean {
     const jwtPayload = getJwtPayloadFromToken();
@@ -52,9 +52,7 @@ export const Auth: React.FC<Props> = ({ children }) => {
     if (!isTokenInLocalStorage() || isTokenExpired()) {
       dispatch(authFail());
     } else {
-      batch(() => {
-        dispatch(authUpdate());
-      });
+      dispatch(authUpdate());
     }
   }, []);
 

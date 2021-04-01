@@ -43,6 +43,8 @@
     "react/no-array-index-key": "off",
     "no-debugger": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "no-plusplus": "off"
   }
 }

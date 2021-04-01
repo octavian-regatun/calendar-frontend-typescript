@@ -16,4 +16,12 @@ interface User {
   isLogged?: boolean;
 }
 
+export interface UserPublic {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  gender: Gender;
+}
+
 export default User;
