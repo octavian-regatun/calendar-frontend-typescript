@@ -1,5 +1,6 @@
-ARG BRANCH=master
 FROM node:lts-alpine
+ARG BRANCH=master
+RUN echo $BRANCH
 WORKDIR /app
 COPY . ./calendar-frontend-typescript
 RUN cd calendar-frontend-typescript && npm install
