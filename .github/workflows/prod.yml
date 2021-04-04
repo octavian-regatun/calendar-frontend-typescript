@@ -17,7 +17,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
       
     - name: Docker build
-      run: docker build -t octavianregatun/planitly --build-arg BRANCH=master .
+      run: docker build -t octavianregatun/planitly:prod --build-arg BRANCH=master .
       
     - name: Docker push
       run: docker push octavianregatun/planitly:prod
