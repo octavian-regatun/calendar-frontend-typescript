@@ -1,3 +1,4 @@
+ARG BRANCH=master
 FROM node:lts-alpine
 WORKDIR /app
 COPY . ./calendar-frontend-typescript
