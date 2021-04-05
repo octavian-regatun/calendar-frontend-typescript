@@ -21,4 +21,3 @@ jobs:
       
     - name: Docker push
       run: docker push octavianregatun/planitly:prod
-      
