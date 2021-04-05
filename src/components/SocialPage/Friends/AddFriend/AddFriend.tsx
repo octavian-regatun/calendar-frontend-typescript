@@ -2,7 +2,7 @@ import { IconButton, TextField } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import { Autocomplete } from "@material-ui/lab";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { ChangeEvent, ReactEventHandler, useState } from "react";
 import config from "../../../../config";
 import { UserPublic } from "../../../../interfaces/user.interface";
 import styles from "./AddFriend.module.css";
@@ -34,10 +34,21 @@ export const AddFriend: React.FC<Props> = ({ setElements, index }) => {
       return temp;
     });
 
+  const handleSelect = async (
+    event: any,
+    user: UserPublic | null
+  ): Promise<void> => {
+    await axios.post(`${config.BACKEND_URI}/api/friendships/add-friend`, {
+      email: user?.email,
+    });
+
+    handleDelete();
+  };
+
   return (
     <div className={styles.root}>
       <Autocomplete
-        // onSelect={}
+        onChange={handleSelect}
         className={styles.autocomplete}
         options={friendsSuggestions}
         getOptionLabel={(option) => option.email}
