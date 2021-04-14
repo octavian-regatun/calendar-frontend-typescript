@@ -1,50 +1,49 @@
 {
-  "extends": [
-    "airbnb-typescript",
-    "airbnb/hooks",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": ["react", "@typescript-eslint", "jest"],
+  "root": true,
   "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true
+    "node": true,
+    "es6": true
   },
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "rules": {
-    "linebreak-style": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
+  "parserOptions": { "ecmaVersion": 8 },
+  "ignorePatterns": ["node_modules/*", ".next/*", ".out/*", "!.prettierrc.js","@types"],
+  "extends": ["eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+      "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn",
+          {
+            "allowExpressions": true,
+            "allowConciseArrowFunctionExpressionsStartingWithVoid": true
+          }
+        ],
+        "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+        "@typescript-eslint/no-explicit-any": "off"
       }
-    ],
-    "react/react-in-jsx-scope": "off",
-    "import/prefer-default-export": "off",
-    "react/prop-types": "off",
-    "import/no-cycle": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "react/no-array-index-key": "off",
-    "no-debugger": "off",
-    "react/jsx-props-no-spreading": "off",
-    "no-underscore-dangle": "off",
-    "@typescript-eslint/no-shadow": "off",
-    "no-plusplus": "off"
-  }
+    }
+  ]
 }
