@@ -17,7 +17,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker build
-        run: docker build -t octavianregatun/planitly-frontend:prod --build-arg BACKEND_URI=http://api-prod:8080 --build-arg PORT=3000 .
+        run: docker build -t octavianregatun/planitly-frontend:prod --build-arg BACKEND_URI=api --build-arg PORT=3000 .
 
       - name: Docker push
         run: docker push octavianregatun/planitly-frontend:prod
