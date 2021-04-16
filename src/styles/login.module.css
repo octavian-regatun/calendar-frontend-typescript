@@ -7,7 +7,7 @@
 
 .card {
   margin: auto 0;
-  background-color: var(--color-primary-500);
+  background-color: var(--material-color-indigo);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,16 +19,16 @@
   margin: 0;
 }
 .card h4 {
-  color: var(--color-gray-400);
+  color: var(--material-color-grey-400);
 }
 
 .card a {
   transition: all 0.2s ease-out;
-  color: var(--color-gray-300);
+  color: var(--material-color-grey-300);
   text-decoration: underline;
 }
 
 .card a:hover {
   transition: all 0.2s ease-out;
-  color: var(--color-white);
+  color: white;
 }

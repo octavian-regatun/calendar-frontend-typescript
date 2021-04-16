@@ -1,8 +1,9 @@
-import { AppBar, Avatar, Button } from '@material-ui/core';
-import styles from '@/styles/Navbar.module.css';
-import { useRouter } from 'next/router';
-import { userInfo } from 'node:os';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useUserState } from '@/lib/store';
+import styles from '@/styles/Navbar.module.css';
+import { AppBar, Avatar, Button, Hidden } from '@material-ui/core';
+import { useRouter } from 'next/router';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -12,29 +13,49 @@ const Navbar: React.FC = () => {
     router.push('logout');
   }
 
+  function getTitle(): string {
+    const title = router.pathname.split('/')[1];
+    return title.charAt(0).toLocaleUpperCase() + title.substring(1);
+  }
+
   return (
     <AppBar color="transparent" position="sticky" className={styles.root}>
-      <div>
-        <img width="50" src="logo.svg" alt="logo" />
-      </div>
-      <h1 className={styles.title}>Calendar</h1>
-      <div className={styles.col}>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleLogOut}
-          className={styles.logOut}
-        >
-          Log Out
-        </Button>
-        <Avatar className={styles.avatar}>
-          {user?.firstName.charAt(0)}
-          {user?.lastName.charAt(0)}
-        </Avatar>
-        <h2>
-          {user?.firstName} {user?.lastName}
-        </h2>
-      </div>
+      <img
+        src="logo.svg"
+        alt="logo"
+        width={50}
+        className={styles.logo}
+        onClick={() => {
+          router.push('calendar');
+        }}
+      />
+
+      <h1 className={styles.title}>{getTitle()}</h1>
+      <Hidden smDown>
+        <div className={styles.col}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleLogOut}
+            className={styles.logOut}
+          >
+            Log Out
+          </Button>
+          <Button
+            onClick={() => {
+              router.push('profile');
+            }}
+          >
+            <Avatar className={styles.avatar}>
+              {user?.firstName.charAt(0)}
+              {user?.lastName.charAt(0)}
+            </Avatar>
+            <h2 className={styles.name}>
+              {user?.firstName} {user?.lastName}
+            </h2>
+          </Button>
+        </div>
+      </Hidden>
     </AppBar>
   );
 };

@@ -5,7 +5,7 @@
 }
 
 .title {
-  color: var(--color-primary-500);
+  color: var(--material-color-indigo);
   display: inline-flex;
   align-items: center;
 }

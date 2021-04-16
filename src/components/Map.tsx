@@ -4,6 +4,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import Locate from './Locate';
+import PickLocation from './PickLocation';
 
 const Map = (): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const Map = (): JSX.Element => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Locate />
+      <PickLocation />
     </MapContainer>
   );
 };

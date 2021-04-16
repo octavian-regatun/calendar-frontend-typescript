@@ -1,3 +1,4 @@
+import LatLon from '@/interfaces/latLon';
 import User from '@/interfaces/user';
 import axios from 'axios';
 import create from 'zustand';
@@ -42,5 +43,17 @@ export const useUserState = create<UserState>(set => ({
   },
   deleteUser: () => {
     set({ user: undefined });
+  },
+}));
+
+type MapState = {
+  coordinates: LatLon | undefined;
+  updateCoordinates: (coordinates: LatLon | undefined) => void;
+};
+
+export const useMapState = create<MapState>(set => ({
+  coordinates: undefined,
+  updateCoordinates: coordinates => {
+    set({ coordinates });
   },
 }));

@@ -1,18 +1,17 @@
-import { useMediaQuery } from 'react-responsive';
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 interface Props {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
-  const isSmallScreen = useMediaQuery({ minWidth: 600 });
-
+const Layout = ({ children }: Props): JSX.Element => {
   return (
     <>
-      {isSmallScreen ? <Navbar /> : null}
-
-      {children}
+      <Sidebar>
+        <Navbar />
+        <>{children}</>
+      </Sidebar>
     </>
   );
 };

@@ -5,10 +5,23 @@
   align-items: center;
   padding: 0 16px;
   height: var(--navbar-height);
+  background-color: white;
+}
+
+.logo {
+  transition: all 0.2s ease-out;
+}
+
+.logo:hover {
+  transition: all 0.2s ease-out;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 .title {
-  color: var(--color-primary-500);
+  color: var(--material-color-indigo);
+  flex: 1;
+  text-align: center;
 }
 
 .logOut {
@@ -19,6 +32,10 @@
   margin-right: 16px;
   background-color: #ff5722;
   color: white;
+}
+
+.name {
+  text-transform: none;
 }
 
 .col {

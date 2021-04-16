@@ -7,6 +7,8 @@ import Head from 'next/head';
 import router from 'next/router';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
+import DayjsUtils from '@date-io/dayjs';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   router.events.on('routeChangeStart', () => {
@@ -26,17 +28,17 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         />
         <link
           rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          crossOrigin=""
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Head>
 
       <Auth>
-        <CssBaseline />
-        <StylesProvider injectFirst>
-          <Component {...pageProps} />
-        </StylesProvider>
+        <MuiPickersUtilsProvider utils={DayjsUtils}>
+          <CssBaseline />
+          <StylesProvider injectFirst>
+            <Component {...pageProps} />
+          </StylesProvider>
+        </MuiPickersUtilsProvider>
       </Auth>
     </>
   );

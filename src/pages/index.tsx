@@ -6,7 +6,7 @@ export default function IndexNextPage(): JSX.Element {
   return (
     <div className={styles.container}>
       <img width="500" src="/banner.svg" alt="logo" />
-      <h1 style={{ color: 'var(--color-primary-500)' }}>
+      <h1 style={{ color: 'var(--material-color-indigo)' }}>
         Plan and organize meetings easier
       </h1>
       <h2>Work in Progress</h2>

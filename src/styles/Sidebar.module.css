@@ -1,0 +1,35 @@
+.drawer {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contentShift {
+  margin-left: 100px;
+}
+
+@media only screen and (max-width: 959px) {
+  .drawer {
+    width: 40vw;
+  }
+}
+
+.activePage {
+  color: var(--material-color-indigo);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 16px;
+}
+
+.icon:last-child {
+  margin-bottom: 0;
+}
