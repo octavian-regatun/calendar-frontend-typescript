@@ -15,6 +15,10 @@ a {
   box-sizing: border-box;
 }
 
+#nprogress .bar{
+  z-index: 2000 !important;
+}
+
 :root {
   --navbar-height: 100px;
 

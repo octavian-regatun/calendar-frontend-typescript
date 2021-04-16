@@ -1,12 +1,14 @@
 import IsAuthenticated from '@/components/IsAuthenticated';
 import Layout from '@/components/Layout';
-import { Button } from '@material-ui/core';
+import styles from '@/styles/Social.module.css';
 
 const SocialNextPage = (): JSX.Element => {
   return (
     <IsAuthenticated>
       <Layout>
-        <h1>Social Page</h1>
+        <div className={styles.root}>
+          <h1>Social Page</h1>
+        </div>
       </Layout>
     </IsAuthenticated>
   );
