@@ -1,7 +1,6 @@
 import styles from '@/styles/UpcomingEvents.module.css';
-import { Button } from '@material-ui/core';
 
-const UpcomingEvents = () => {
+const UpcomingEvents = (): JSX.Element => {
   return (
     <div className={styles.root}>
       <div className={styles.title}>

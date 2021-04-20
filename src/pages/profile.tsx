@@ -15,7 +15,7 @@ const ProfileNextPage = (): JSX.Element => {
   const user = useUserState(state => state.user) as User;
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+  const handleClose = (event?: React.SyntheticEvent, reason?: string): void => {
     if (reason === 'clickaway') {
       return;
     }

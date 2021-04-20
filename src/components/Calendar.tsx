@@ -4,7 +4,7 @@ import Months from '@/enums/months';
 import { daysOfTheWeek, generateCalendarDays } from '@/lib/calendar';
 import styles from '@/styles/Calendar.module.css';
 import { Popover } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CreateEvent from './CreateEvent';
 
 const Calendar = (): JSX.Element => {
@@ -57,7 +57,7 @@ const Calendar = (): JSX.Element => {
         </div>
         {calendar.map((week, index) => (
           <div key={`week-${index + 1}`} className={styles.week}>
-            {week.map((day, index) => (
+            {week.map(day => (
               <div
                 key={`day-${day.getTime()}`}
                 className={styles.day}

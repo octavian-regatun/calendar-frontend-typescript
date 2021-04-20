@@ -1,7 +1,27 @@
-.root {
+.container {
   padding: 16px;
 }
 
-.root h1 {
-  margin: 0;
+.title {
+  margin: 0 0 16px 0;
+}
+
+.paper {
+  padding: 16px 16px;
+  margin-bottom: 16px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paper:last-child {
+  margin-bottom: 0;
+}
+
+.row{
+  margin-bottom: 16px;
+}
+
+.row:last-child{
+  margin-bottom: 0;
 }

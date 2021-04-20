@@ -1,6 +1,6 @@
 import { useMapState } from '@/lib/store';
 import { LatLng } from 'leaflet';
-import { Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
+import { Marker, Popup, useMapEvents } from 'react-leaflet';
 
 const PickLocation = (): JSX.Element | null => {
   const coordinates = useMapState(state => state.coordinates);
