@@ -8,13 +8,14 @@ import { Avatar, Button, Snackbar, TextField } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
 import { useFormik } from 'formik';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import * as yup from 'yup';
 
 const ProfileNextPage = (): JSX.Element => {
   const user = useUserState(state => state.user) as User;
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
-
+  const router = useRouter();
   const handleClose = (event?: React.SyntheticEvent, reason?: string): void => {
     if (reason === 'clickaway') {
       return;
@@ -22,6 +23,10 @@ const ProfileNextPage = (): JSX.Element => {
 
     setIsSnackbarOpen(false);
   };
+
+  function handleLogOut(): void {
+    router.push('logout');
+  }
 
   const validationSchema = yup.object({
     username: yup.string().min(4).max(16),
@@ -78,6 +83,16 @@ const ProfileNextPage = (): JSX.Element => {
             </Button>
           </div>
         </form>
+        <div className={styles.logoutContainer}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleLogOut}
+            className={styles.logOut}
+          >
+            Log Out
+          </Button>
+        </div>
         <Snackbar
           open={isSnackbarOpen}
           autoHideDuration={2000}

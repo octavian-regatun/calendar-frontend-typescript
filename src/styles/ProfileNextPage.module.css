@@ -19,3 +19,8 @@
 .row {
   margin-bottom: 16px;
 }
+
+.logoutContainer {
+  display: flex;
+  justify-content: center;
+}

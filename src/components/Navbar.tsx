@@ -9,10 +9,6 @@ const Navbar: React.FC = () => {
   const router = useRouter();
   const user = useUserState(state => state.user);
 
-  function handleLogOut(): void {
-    router.push('logout');
-  }
-
   function getTitle(): string {
     const title = router.pathname.split('/')[1];
     return title.charAt(0).toLocaleUpperCase() + title.substring(1);
@@ -33,14 +29,6 @@ const Navbar: React.FC = () => {
       <h1 className={styles.title}>{getTitle()}</h1>
       <Hidden smDown>
         <div className={styles.col}>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleLogOut}
-            className={styles.logOut}
-          >
-            Log Out
-          </Button>
           <Button
             onClick={() => {
               router.push('profile');
