@@ -4,6 +4,8 @@ import { useUserState } from '@/lib/store';
 import styles from '@/styles/Navbar.module.css';
 import { AppBar, Avatar, Button, Hidden } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Notifications from './Notifications';
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -29,6 +31,7 @@ const Navbar: React.FC = () => {
       <h1 className={styles.title}>{getTitle()}</h1>
       <Hidden smDown>
         <div className={styles.col}>
+          <Notifications className={styles.notifications} />
           <Button
             onClick={() => {
               router.push('profile');

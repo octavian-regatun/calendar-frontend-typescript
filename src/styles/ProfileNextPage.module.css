@@ -20,6 +20,10 @@
   margin-bottom: 16px;
 }
 
+.row:last-child {
+  margin-bottom: 0;
+}
+
 .logoutContainer {
   display: flex;
   justify-content: center;
