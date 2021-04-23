@@ -5,8 +5,8 @@ export default interface User {
   _id: string;
   provider: Providers;
   firstName: string;
-  lastName: string;
-  username: string;
+  lastName?: string;
+  username?: string;
   email: string;
   gender: Gender;
   birthday: Date;

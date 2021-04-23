@@ -1,5 +1,5 @@
 import { BACKEND_URI } from '@/lib/constants';
-import { useAddFriendTextFieldState, useFriendshipsState } from '@/lib/store';
+import { useAddFriendTextFieldState, useFriendsState } from '@/lib/store';
 import styles from '@/styles/AddFriend.module.css';
 import socialStyles from '@/styles/Social.module.css';
 import {
@@ -43,8 +43,8 @@ const TextField = ({ className }: PropsTextField): JSX.Element => {
     state => state.updateTextField,
   );
 
-  const updateFriendships = useFriendshipsState(
-    state => state.updateFriendships,
+  const updateFriendships = useFriendsState(
+    state => state.updateFriends,
   );
 
   interface UserSuggestion {

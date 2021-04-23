@@ -1,4 +1,5 @@
 import AddFriend from '@/components/AddFriend';
+import Friends from '@/components/Friends';
 import IsAuthenticated from '@/components/IsAuthenticated';
 import Layout from '@/components/Layout';
 import { useAddFriendTextFieldState } from '@/lib/store';
@@ -13,11 +14,7 @@ const SocialNextPage = (): JSX.Element => {
       <Layout>
         <Grid container className={styles.container}>
           <Grid item xs={12} md={4} lg={3} className={styles.grid1}>
-            <Paper elevation={2} className={styles.paper}>
-              <h1 className={styles.title}>Friends</h1>
-              {textField}
-              <AddFriend.Button className={styles.row} />
-            </Paper>
+            <Friends />
             <Paper elevation={2} className={styles.paper}>
               <h1 className={styles.title}>Groups</h1>
             </Paper>

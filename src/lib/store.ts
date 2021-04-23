@@ -1,10 +1,10 @@
-import Friendship from '@/interfaces/friendship';
+import Friend from '@/interfaces/friends';
 import LatLon from '@/interfaces/latLon';
 import User from '@/interfaces/user';
 import axios from 'axios';
 import create from 'zustand';
 import { BACKEND_URI } from './constants';
-import { fetchUser } from './fetchApi';
+import { fetchLoggedUser } from './fetchApi';
 import { redirectToError } from './redirect';
 
 type AuthState = {
@@ -40,7 +40,7 @@ export const useUserState = create<UserState>(set => ({
     set({ user: user });
   },
   updateUser: async () => {
-    const user = (await fetchUser()) as User;
+    const user = (await fetchLoggedUser()) as User;
     set({ user: user });
   },
   deleteUser: () => {
@@ -74,23 +74,28 @@ export const useAddFriendTextFieldState = create<AddFriendTextFieldState>(
   }),
 );
 
-type FriendshipsState = {
-  friendships: Friendship[];
-  updateFriendships: () => Promise<void>;
+type FriendsState = {
+  friends: Friend[];
+  updateFriends: () => Promise<void>;
+  deleteFriend: (id: string) => Promise<void>;
 };
 
-export const useFriendshipsState = create<FriendshipsState>(set => ({
-  friendships: [],
-  updateFriendships: async () => {
+export const useFriendsState = create<FriendsState>((set, get) => ({
+  friends: [],
+  updateFriends: async () => {
     try {
-      const { data: friendships } = await axios.get<Friendship[]>(
-        `${BACKEND_URI}/friendships`,
+      const { data: friends } = await axios.get<Friend[]>(
+        `${BACKEND_URI}/friendships/all`,
       );
 
-      set({ friendships });
+      set({ friends });
     } catch (e) {
       console.log(e);
       redirectToError('updateFriendships error');
     }
+  },
+  deleteFriend: async (id: string) => {
+    await axios.delete(`${BACKEND_URI}/friendships/${id}`);
+    await get().updateFriends();
   },
 }));
