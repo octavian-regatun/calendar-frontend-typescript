@@ -80,11 +80,11 @@ const ProfileNextPage = (): JSX.Element => {
         </form>
         <Snackbar
           open={isSnackbarOpen}
-          autoHideDuration={6000}
+          autoHideDuration={2000}
           onClose={handleClose}
         >
           <MuiAlert elevation={6} variant="filled">
-            This is a success message!
+            Changes were saved!
           </MuiAlert>
         </Snackbar>
       </Layout>

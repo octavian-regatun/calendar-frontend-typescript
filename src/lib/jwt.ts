@@ -24,10 +24,6 @@ export async function setTokenInLocalStorage(
       { tokenId: googleTokenId },
     );
 
-    const jwtPayload = jwtDecode<JwtPayload>(token);
-
-    console.log(jwtPayload);
-
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     localStorage.setItem('token', token as string);

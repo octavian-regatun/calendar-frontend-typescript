@@ -11,8 +11,6 @@ const Friends = (): JSX.Element => {
   const friends = useFriendsState(state => state.friends);
   const updateFriends = useFriendsState(state => state.updateFriends);
 
-  console.log(friends);
-
   useEffect(() => {
     (async () => {
       await updateFriends();
