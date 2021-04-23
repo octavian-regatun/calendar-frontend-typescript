@@ -1,14 +1,10 @@
-import AddFriend from '@/components/AddFriend';
 import Friends from '@/components/Friends';
 import IsAuthenticated from '@/components/IsAuthenticated';
 import Layout from '@/components/Layout';
-import { useAddFriendTextFieldState } from '@/lib/store';
 import styles from '@/styles/Social.module.css';
 import { Grid, Paper } from '@material-ui/core';
 
 const SocialNextPage = (): JSX.Element => {
-  const textField = useAddFriendTextFieldState(state => state.textField);
-
   return (
     <IsAuthenticated>
       <Layout>

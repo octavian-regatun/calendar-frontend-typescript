@@ -55,7 +55,7 @@ const ProfileNextPage = (): JSX.Element => {
           <div className={styles.row}>
             <Avatar className={styles.avatar}>
               {user?.firstName.charAt(0)}
-              {user?.lastName.charAt(0)}
+              {user?.lastName?.charAt(0)}
             </Avatar>
           </div>
           <div className={styles.row}>

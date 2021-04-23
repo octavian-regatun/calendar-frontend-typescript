@@ -6,7 +6,7 @@ export default interface User {
   provider: Providers;
   firstName: string;
   lastName?: string;
-  username?: string;
+  username: string;
   email: string;
   gender: Gender;
   birthday: Date;

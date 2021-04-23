@@ -43,9 +43,7 @@ const TextField = ({ className }: PropsTextField): JSX.Element => {
     state => state.updateTextField,
   );
 
-  const updateFriendships = useFriendsState(
-    state => state.updateFriends,
-  );
+  const updateFriendships = useFriendsState(state => state.updateFriends);
 
   interface UserSuggestion {
     _id: string;
