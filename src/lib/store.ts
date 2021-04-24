@@ -85,7 +85,7 @@ export const useFriendsState = create<FriendsState>((set, get) => ({
   updateFriends: async () => {
     try {
       const { data: friends } = await axios.get<Friend[]>(
-        `${BACKEND_URI}/friendships/all`,
+        `${BACKEND_URI}/friendships/?status=all`,
       );
 
       set({ friends });
